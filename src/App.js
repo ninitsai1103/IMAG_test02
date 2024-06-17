@@ -62,6 +62,14 @@ export default function App() {
     }
   };
 
+  const downloadCanvas = () => {
+    const canvas = canvasRef.current;
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "canvas-image.png";
+    link.click();
+  };
+
   return (
     <div className="container">
       <div className="top-box">
@@ -117,7 +125,7 @@ export default function App() {
         >
           Moon
         </div>
-        <div className="btn btn-download" onClick={() => {}}>
+        <div className="btn btn-download" onClick={() => downloadCanvas()}>
           Download card
         </div>
       </div>
