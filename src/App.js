@@ -2,13 +2,9 @@ import "./app.scss";
 import {useState, useEffect, useRef} from "react";
 
 export default function App() {
-  const [btnSelected, setBtnSelected] = useState(false);
   const [mountain, setMountain] = useState("");
   const [sunMoon, setSunMoon] = useState("");
 
-  const handleBtnSelected = () => {
-    setBtnSelected(!btnSelected);
-  }
   const handleMountain = (mountainName) => {
     if (mountain === mountainName) {
       setMountain(""); // 取消選中
@@ -28,9 +24,9 @@ export default function App() {
   return (
     <div className="container">
       <div className="top-box">
-        <div>&nbsp;</div>
+        <div className="show-moutain">&nbsp;</div>
         <div>&</div>
-        <div>&nbsp;</div>
+        <div className="show-sunmoon">&nbsp;</div>
       </div>
       <canvas
         id="canvas"
@@ -41,25 +37,21 @@ export default function App() {
       <div className="btns">
         <div className={`btn ${mountain === "mountain1" ? "selected-btn" : ""}`} onClick={() => {
           handleMountain("mountain1");
-          handleBtnSelected(true);
         }}>
           Mountain 1
         </div>
         <div className={`btn ${mountain === "mountain2" ? "selected-btn" : ""}`} onClick={() => {
           handleMountain("mountain2");
-          handleBtnSelected(true);
         }}>
           Mountain 2
         </div>
         <div className={`btn ${sunMoon === "sun" ? "selected-btn" : ""}`} onClick={() => {
           handleSunMoon("sun");
-          handleBtnSelected(true);
         }}>
           Sun
         </div>
         <div className={`btn ${sunMoon === "moon" ? "selected-btn" : ""}`} onClick={() => {
           handleSunMoon("moon");
-          handleBtnSelected(true);
         }}>
           Moon
         </div>
